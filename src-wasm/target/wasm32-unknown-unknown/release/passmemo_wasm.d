@@ -1,0 +1,1 @@
+/home/callithyia/Development/passPortal/browser-extension/src-wasm/target/wasm32-unknown-unknown/release/passmemo_wasm.wasm: /home/callithyia/Development/passPortal/browser-extension/src-wasm/src/crypto.rs /home/callithyia/Development/passPortal/browser-extension/src-wasm/src/lib.rs

@@ -1,0 +1,542 @@
+/* PassAlways Browser Extension - Content Script Styles */
+/* Co-Authored-By: Project Engineer MelAnee Hannah */
+
+/* Inline generate/fill buttons */
+.passmemo-generate-btn {
+  margin-left: 8px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  z-index: 999999;
+  position: relative;
+}
+
+.passmemo-signup-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+}
+
+.passmemo-signup-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.4);
+}
+
+.passmemo-fill-btn {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  box-shadow: 0 2px 4px rgba(240, 147, 251, 0.3);
+}
+
+.passmemo-fill-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(240, 147, 251, 0.4);
+}
+
+.passmemo-btn-loading {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.passmemo-btn-success {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.passmemo-btn-error {
+  background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+}
+
+.passmemo-generate-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Notification banner */
+.passmemo-notification {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  max-width: 400px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  z-index: 999999;
+  animation: passmemo-slide-in 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+@keyframes passmemo-slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.passmemo-notification-content {
+  flex: 1;
+}
+
+.passmemo-notification-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #1a202c;
+}
+
+.passmemo-notification-message {
+  font-size: 13px;
+  color: #4a5568;
+  line-height: 1.5;
+}
+
+.passmemo-notification-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #a0aec0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.passmemo-notification-close:hover {
+  background: #edf2f7;
+  color: #1a202c;
+}
+
+.passmemo-notification-success {
+  border-left: 4px solid #38ef7d;
+}
+
+.passmemo-notification-error {
+  border-left: 4px solid #f45c43;
+}
+
+.passmemo-notification-info {
+  border-left: 4px solid #667eea;
+}
+
+/* Banner (for password change flow) */
+.passmemo-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 999998;
+  animation: passmemo-slide-down 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+@keyframes passmemo-slide-down {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.passmemo-banner-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.passmemo-banner-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.passmemo-banner-text {
+  flex: 1;
+}
+
+.passmemo-banner-text strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #1a202c;
+}
+
+.passmemo-banner-text p {
+  margin: 0;
+  font-size: 13px;
+  color: #4a5568;
+}
+
+.passmemo-banner-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.passmemo-banner-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.passmemo-banner-btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.passmemo-banner-btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+}
+
+.passmemo-banner-btn-secondary {
+  background: #edf2f7;
+  color: #4a5568;
+}
+
+.passmemo-banner-btn-secondary:hover {
+  background: #e2e8f0;
+}
+
+.passmemo-banner-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Field highlight (for password change current field) */
+.passmemo-field-highlight {
+  margin-top: 4px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+.passmemo-field-highlight-warning {
+  background: #fef5e7;
+  color: #d68910;
+  border: 1px solid #f9e79f;
+}
+
+.passmemo-field-highlight-success {
+  background: #eafaf1;
+  color: #1e8449;
+  border: 1px solid #a9dfbf;
+}
+
+.passmemo-field-warning {
+  border: 2px solid #f9e79f !important;
+  background-color: #fef5e7 !important;
+}
+
+.passmemo-field-success {
+  border: 2px solid #a9dfbf !important;
+  background-color: #eafaf1 !important;
+}
+
+/* Modal overlay and dialog */
+.passmemo-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999999;
+  animation: passmemo-fade-in 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+@keyframes passmemo-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.passmemo-dialog {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  animation: passmemo-scale-in 0.2s ease;
+}
+
+@keyframes passmemo-scale-in {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.passmemo-dialog-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.passmemo-dialog-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a202c;
+}
+
+.passmemo-dialog-content {
+  padding: 24px;
+}
+
+.passmemo-dialog-content p {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+.passmemo-dialog-content p:last-child {
+  margin-bottom: 0;
+}
+
+.passmemo-dialog-content strong {
+  color: #1a202c;
+  font-weight: 600;
+}
+
+.passmemo-input,
+.passmemo-version-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  margin-top: 8px;
+  transition: all 0.2s ease;
+}
+
+.passmemo-input:focus,
+.passmemo-version-select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.passmemo-dialog-actions {
+  padding: 16px 24px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.passmemo-dialog-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.passmemo-dialog-btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.passmemo-dialog-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.passmemo-dialog-btn-secondary {
+  background: #edf2f7;
+  color: #4a5568;
+}
+
+.passmemo-dialog-btn-secondary:hover {
+  background: #e2e8f0;
+}
+
+/* Username selector dropdown */
+.passmemo-username-selector {
+  position: absolute;
+  background: white;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  z-index: 999999;
+  min-width: 200px;
+  max-width: 400px;
+  max-height: 300px;
+  overflow-y: auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  animation: passmemo-dropdown-in 0.15s ease;
+}
+
+@keyframes passmemo-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.passmemo-username-selector-header {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: #f7fafc;
+  border-radius: 8px 8px 0 0;
+}
+
+.passmemo-username-option {
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  font-size: 14px;
+  color: #2d3748;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #f7fafc;
+}
+
+.passmemo-username-option:last-child {
+  border-bottom: none;
+  border-radius: 0 0 8px 8px;
+}
+
+.passmemo-username-option:hover {
+  background: #f7fafc;
+}
+
+.passmemo-username-option:active {
+  background: #edf2f7;
+}
+
+.passmemo-username-option-default {
+  background: #f0f4ff;
+  font-weight: 500;
+}
+
+.passmemo-username-option-default:hover {
+  background: #e6edff;
+}
+
+.passmemo-username-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.passmemo-username-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.passmemo-username-badge {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #667eea;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+}
+
+.passmemo-username-selector-empty {
+  padding: 16px 12px;
+  text-align: center;
+  font-size: 13px;
+  color: #a0aec0;
+  font-style: italic;
+}
+
+/* Password visibility toggle */
+.passmemo-password-toggle {
+  display: inline-block;
+  background: white;
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 6px 10px;
+  margin-left: 4px;
+  z-index: 999998;
+  font-size: 18px;
+  color: #718096;
+  transition: all 0.2s ease;
+  user-select: none;
+  line-height: 1;
+  vertical-align: middle;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.passmemo-password-toggle:hover {
+  color: #2d3748;
+  border-color: #a0aec0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.passmemo-password-toggle:active {
+  color: #667eea;
+  border-color: #667eea;
+}
+
+.passmemo-password-toggle-hidden {
+  background: #f7fafc;
+}
+
+.passmemo-password-toggle-visible {
+  background: #e6edff;
+  color: #667eea;
+  border-color: #667eea;
+}

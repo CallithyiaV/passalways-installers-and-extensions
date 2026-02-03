@@ -1,0 +1,76 @@
+{
+  "manifest_version": 3,
+  "name": "PassAlways - Quantum Password Generator",
+  "version": "0.1.4",
+  "description": "Deterministic quantum-resistant password generation with BLAKE3 + Argon2id + Kyber",
+  "author": "Co-Authored-By: Project Engineer MelAnee Hannah",
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "passalways@passalways.com",
+      "strict_min_version": "109.0"
+    }
+  },
+
+  "permissions": [
+    "storage",
+    "activeTab",
+    "nativeMessaging"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "page": "background/background.html",
+    "type": "module"
+  },
+
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/webauthn-handler.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/content-script.js"],
+      "css": ["content/content-styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "shared/passmemo_wasm_bg.wasm",
+        "shared/passmemo_wasm.js",
+        "content/injected-ui.html",
+        "content/webauthn-main.js"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  }
+}
