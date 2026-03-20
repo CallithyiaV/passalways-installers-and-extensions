@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "PassAlways - Quantum Password Generator",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Deterministic quantum-resistant password generation with BLAKE3 + Argon2id + Kyber",
   "author": "Co-Authored-By: Project Engineer MelAnee Hannah",
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApw6/UZOGqxhT4qg7/vdKUNMERXh/7zadwCGrLvi7BgJhECe+QIWzF41+3SwNIxOxSw6lAMs+bv7SXg+tho+/ClHmCgfkIrfceqvqZo1oJtCSEMVSKWcrJLzJb6vvVqhch+L3E8CYhAxVD8TS3K1rO5RzGAqHCUhtHL8Mv72GvkNS7AvI2pqzY6Qm8dGdVxNHlvVqDbA+4YOwdYD/q/fNyX2UOd+R6WqOA+C6ogIgiVjTEDcQoCq7sgiU/IIUA63aCjP63FItRu07sgI31xby/+LVfJ/ZHGqtghoxAdhGUe+jfwkUdXsEobd+t8hTcYr21shN81qSGLdyDUN6RPO3xwIDAQAB",
