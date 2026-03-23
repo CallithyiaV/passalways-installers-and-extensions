@@ -62,8 +62,6 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "shared/passmemo_wasm_bg.wasm",
-        "shared/passmemo_wasm.js",
         "content/injected-ui.html",
         "content/webauthn-main.js"
       ],
@@ -72,6 +70,6 @@
   ],
 
   "content_security_policy": {
-    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; frame-ancestors 'none'; base-uri 'self'"
+    "extension_pages": "script-src 'self'; object-src 'self'; frame-ancestors 'none'; base-uri 'self'"
   }
 }
