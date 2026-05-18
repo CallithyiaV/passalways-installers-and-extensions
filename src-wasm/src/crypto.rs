@@ -153,7 +153,20 @@ impl PassphraseTemplate {
     /// {USERNAME} -> actual username
     /// {SITE} -> actual site name
     pub fn fill(&self, placeholder: &str, value: &str) -> String {
-        self.template.replace(placeholder, value)
+        let lower_template    = self.template.to_lowercase();
+        let lower_placeholder = placeholder.to_lowercase();
+        let mut result   = String::new();
+        let mut last_end = 0;
+        let mut search   = 0;
+        while let Some(pos) = lower_template[search..].find(&lower_placeholder) {
+            let abs = search + pos;
+            result.push_str(&self.template[last_end..abs]);
+            result.push_str(value);
+            last_end = abs + lower_placeholder.len();
+            search   = last_end;
+        }
+        result.push_str(&self.template[last_end..]);
+        result
     }
 
     pub fn as_str(&self) -> &str {
